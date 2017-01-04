@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:9.6.1
+    volumes:
+      - /var/lib/postgresql/data
+
+  web:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    links:
+      - db
+    command: bash
+    environment:
+      - DATABASE_URL=postgres://postgres@db:5432
+    depends_on:
+      - bundle
+    volumes_from:
+      - bundle
+
+  bundle:
+    image: busybox
+    command: echo "I'm a little data container, short and stout..."
+    volumes:
+      - /bundle
