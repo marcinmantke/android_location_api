@@ -9,7 +9,7 @@ services:
   web:
     build: .
     ports:
-      - 3000:3000
+      - 3001:3000
     volumes:
       - .:/app
     links:
@@ -17,6 +17,7 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
     environment:
       - DATABASE_URL=postgres://postgres@db:5432
+      - VIRTUAL_HOST=android.mantke.pl
     depends_on:
       - bundle
     volumes_from:
