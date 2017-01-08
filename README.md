@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Temat: "Aplikacja umożliwiająca śledzenie swojego telefonu."
 
-Things you may want to cover:
+Wykorzystane elementy: komunikacja z API, zbieranie lokalizacji przy pomocy GPS
+Opcjonalnie: zapisywanie lokalizacji w bazie SQLite w przypadku braku połączenia z siecią
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Schemat działania:
+1. Użytkownik musi się zarejestrować/zalogować w celu korzystania z aplikacji (komunikacja z API).
+2. Aplikacja zbiera dane nt. jego lokalizacji (GPS)
+3. Aplikacja, co pewien okres czasu, wysyła paczkę z lokalizacją użytkownika (API)
+4. (Opcjonalnie) W przypadku braku połączenia z siecią Internet, dane z GPS są zapisywane w bazie SQLite (SQLite)
+5. Użytkownik może zobaczyć historię swojej lokalizacji na mapie

@@ -2,21 +2,19 @@ version: '2'
 
 services:
   db:
-    image: postgres:9.6.1
+    image: postgres:latest
     volumes:
       - /var/lib/postgresql/data
 
   web:
-    build:
-      dockerfile: Dockerfile
-      context: .
+    build: .
     ports:
       - 3000:3000
     volumes:
       - .:/app
     links:
       - db
-    command: bash
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
     environment:
       - DATABASE_URL=postgres://postgres@db:5432
     depends_on:
@@ -26,6 +24,6 @@ services:
 
   bundle:
     image: busybox
-    command: echo "I'm a little data container, short and stout..."
+    command: echo "I'm volume for bundler"
     volumes:
       - /bundle
