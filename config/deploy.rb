@@ -21,10 +21,10 @@ set :repo_url, "git@github.com:marcinmantke/android_location_api.git"
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml", "config/secrets.yml"
+# append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -34,3 +34,10 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 
 set :docker_compose, true
+
+set :docker_volumes, [
+  "#{shared_path}/config/secrets.yml:/var/www/app/config/secrets.yml",
+  "#{shared_path}/config/database.yml:/var/www/app/config/database.yml",
+  "#{shared_path}/log:/var/www/app/log",
+  "APP_staging_assets:/var/www/app/public/assets"
+]
