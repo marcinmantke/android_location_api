@@ -8,6 +8,9 @@ RUN apt-get update -qq && \
 
 WORKDIR $APP_ROOT
 
+ADD Gemfile* $APP_ROOT/
+RUN bundle install --jobs=8 --retry=3 --without development test --deployment
+
 ADD . $APP_ROOT
 
 #COPY config/secrets.yml.example config/secrets.yml
