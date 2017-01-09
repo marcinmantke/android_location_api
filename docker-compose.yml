@@ -18,10 +18,10 @@ services:
     environment:
       - DATABASE_URL=postgres://postgres@db:5432
       - VIRTUAL_HOST=android.mantke.pl
-    depends_on:
-      - bundle
-    volumes_from:
-      - bundle
+    # depends_on:
+    #   - bundle
+    # volumes_from:
+    #   - bundle
 
   bundle:
     image: busybox
