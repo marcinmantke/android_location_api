@@ -59,3 +59,7 @@ server "android.mantke.pl", user: "root", roles: %w{app db web}
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+set :docker_compose_project_name, -> { "#{fetch(:application)}" }
+set :docker_pass_env, -> { ["RAILS_ENV"] }
+set :docker_copy_data, %w(config/secrets.yml config/database.yml)
