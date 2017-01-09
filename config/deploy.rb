@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock "3.7.1"
 
-set :application, "android_location_api"
+set :application, "android"
 set :repo_url, "git@github.com:marcinmantke/android_location_api.git"
 
 # Default branch is :master
@@ -36,8 +36,7 @@ set :repo_url, "git@github.com:marcinmantke/android_location_api.git"
 set :docker_compose, true
 
 set :docker_volumes, [
-  "#{shared_path}/config/secrets.yml:/var/www/app/config/secrets.yml",
-  "#{shared_path}/config/database.yml:/var/www/app/config/database.yml",
-  "#{shared_path}/log:/var/www/app/log",
-  "APP_staging_assets:/var/www/app/public/assets"
+  "#{shared_path}/config/secrets.yml:/app/config/secrets.yml",
+  "#{shared_path}/config/database.yml:/app/config/database.yml",
+  "#{shared_path}/log:/app/log"
 ]
