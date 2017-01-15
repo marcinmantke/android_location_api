@@ -4,4 +4,5 @@ Rails.application.routes.draw do
                      :authorized_applications
   end
   devise_for :users, controllers: { registrations: "registrations" }
+  resource :locations
 end
